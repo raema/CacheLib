@@ -139,10 +139,6 @@ bool ShmManager::initFromFile() {
         "Invalid value for attach. ShmVal: {}", *object.shmVal()));
   }
 
-<<<<<<< HEAD
-  for (const auto& kv : *object.nameToKeyMap()) {
-    nameToKey_.insert({kv.first, kv.second});
-=======
   for (const auto& kv : *object.nameToKeyMap_ref()) {
     if (kv.second.path == "") {
       PosixSysVSegmentOpts type;
@@ -153,7 +149,6 @@ bool ShmManager::initFromFile() {
       type.path = kv.second.path;
       nameToOpts_.insert({kv.first, type});
     }
->>>>>>> Add support for shm opts serialization
   }
   return true;
 }
