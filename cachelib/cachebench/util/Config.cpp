@@ -34,7 +34,11 @@ StressorConfig::StressorConfig(const folly::dynamic& configJson) {
   JSONSetVal(configJson, samplingIntervalMs);
 
   JSONSetVal(configJson, checkConsistency);
+<<<<<<< HEAD
   JSONSetVal(configJson, touchValue);
+=======
+  JSONSetVal(configJson, validateValue);
+>>>>>>> Extend cachbench with value validation
 
   JSONSetVal(configJson, numOps);
   JSONSetVal(configJson, numThreads);
