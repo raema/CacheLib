@@ -181,13 +181,8 @@ class Cache {
     return getSize(item.get());
   }
 
-<<<<<<< HEAD
-  // read entire value on find.
-  void touchValue(const ReadHandle& it) const;
-=======
   // checks if values stored in it matches expectedValue_.
   void validateValue(const ItemHandle &it) const;
->>>>>>> Extend cachbench with value validation
 
   // returns the size of the item, taking into account ItemRecords could be
   // enabled.
@@ -255,12 +250,7 @@ class Cache {
   // returns true if the consistency checking is enabled.
   bool consistencyCheckEnabled() const { return valueTracker_ != nullptr; }
 
-<<<<<<< HEAD
-  // returns true if touching value is enabled.
-  bool touchValueEnabled() const { return touchValue_; }
-=======
   bool valueValidatingEnabled() const { return expectedValue_.has_value(); }
->>>>>>> Extend cachbench with value validation
 
   // return true if the key was previously detected to be inconsistent. This
   // is useful only when consistency checking is enabled by calling
@@ -384,13 +374,8 @@ class Cache {
   // tracker for consistency monitoring.
   std::unique_ptr<ValueTracker> valueTracker_;
 
-<<<<<<< HEAD
-  // read entire value on find.
-  bool touchValue_{false};
-=======
   // exceptected value of all items in Cache.
   std::optional<std::string> expectedValue_;
->>>>>>> Extend cachbench with value validation
 
   // reading of the nand bytes written for the benchmark if enabled.
   const uint64_t nandBytesBegin_{0};

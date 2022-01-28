@@ -421,21 +421,6 @@ typename Cache<Allocator>::WriteHandle Cache<Allocator>::insertOrReplace(
 }
 
 template <typename Allocator>
-<<<<<<< HEAD
-void Cache<Allocator>::touchValue(const ReadHandle& it) const {
-  XDCHECK(touchValueEnabled());
-
-  auto ptr = reinterpret_cast<const uint8_t*>(getMemory(it));
-
-  /* The accumulate call is intended to access all bytes of the value
-   * and nothing more. */
-  auto sum = std::accumulate(ptr, ptr + getSize(it), 0ULL);
-  folly::doNotOptimizeAway(sum);
-}
-
-template <typename Allocator>
-typename Cache<Allocator>::ReadHandle Cache<Allocator>::find(Key key) {
-=======
 void Cache<Allocator>::validateValue(const ItemHandle &it) const {
   XDCHECK(valueValidatingEnabled());
 
@@ -452,7 +437,6 @@ void Cache<Allocator>::validateValue(const ItemHandle &it) const {
 template <typename Allocator>
 typename Cache<Allocator>::ItemHandle Cache<Allocator>::find(Key key,
                                                              AccessMode mode) {
->>>>>>> Extend cachbench with value validation
   auto findFn = [&]() {
     util::LatencyTracker tracker;
     if (FLAGS_report_api_latency) {
